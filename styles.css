@@ -1,0 +1,1535 @@
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #101923;
+    --background-light: #172536;
+    --banner: #304b63;
+    --banner-dark: #1d3142;
+    --accent: #f2b84b;
+    --text: #f3f5f7;
+    --text-secondary: #b8c4cf;
+    --border: rgba(255, 255, 255, 0.13);
+    --max-width: 1180px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navbar {
+    width: 100%;
+    height: 64px;
+    padding: 0 5%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    z-index: 1000;
+}
+
+.nav-links {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 38px;
+}
+
+.nav-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--text);
+}
+
+.nav-link.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    width: 100%;
+    height: 2px;
+    background-color: var(--accent);
+}
+
+
+/* =========================================================
+   PROJECTS DROPDOWN
+========================================================= */
+
+.dropdown {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.arrow {
+    color: var(--accent);
+    font-size: 0.8rem;
+    transition: transform 0.2s ease;
+}
+
+.dropdown:hover .arrow,
+.dropdown:focus-within .arrow {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 64px;
+    right: 0;
+    width: 230px;
+    padding: 10px;
+    background-color: #111c25;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-top: 2px solid var(--accent);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-7px);
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        visibility 0.2s ease;
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.project-link {
+    display: block;
+    padding: 13px 15px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.project-link:hover {
+    color: var(--accent);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+
+/* =========================================================
+   HOME HERO / BANNER
+========================================================= */
+
+.hero {
+    min-height: 345px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+    background:
+        linear-gradient(
+            120deg,
+            var(--banner-dark),
+            var(--banner),
+            #20394c
+        );
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.18)
+        );
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HOME HEADER LAYOUT
+========================================================= */
+
+.home-header {
+    min-height: 150px;
+    justify-content: stretch;
+    align-items: center;
+}
+
+.home-header-inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 0 5%;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 30px;
+}
+
+.home-site-name {
+    justify-self: start;
+    color: var(--accent);
+    font-size: clamp(1.8rem, 3vw, 3rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    white-space: nowrap;
+}
+
+.home-header-title {
+    justify-self: center;
+    color: var(--text);
+    font-size: clamp(2.2rem, 4.5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.home-header .navbar {
+    width: auto;
+    padding: 0;
+    justify-self: end;
+}
+
+
+/* =========================================================
+   HOME FEATURED GAMEPLAY
+========================================================= */
+
+.home-work-section {
+    width: min(1400px, 92%);
+    margin: 0 auto;
+    padding: 65px 0 80px;
+}
+
+.home-gameplay-container {
+    width: 100%;
+}
+
+.home-gameplay-video {
+    display: block;
+    width: 100%;
+    height: auto;
+    background-color: #000;
+    border-radius: 6px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+.home-featured-project {
+    margin-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.home-featured-label {
+    margin-bottom: 8px;
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+}
+
+.home-featured-project h2 {
+    margin-bottom: 8px;
+    color: var(--text);
+    font-size: 2rem;
+    line-height: 1.2;
+}
+
+.home-featured-project p:not(.home-featured-label) {
+    max-width: 700px;
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+}
+
+
+/* =========================================================
+   HOME INTRODUCTION
+========================================================= */
+
+.intro-section {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 90px 30px;
+    display: grid;
+    grid-template-columns: minmax(280px, 400px) 1fr;
+    gap: 75px;
+    align-items: center;
+    border-top: 1px solid var(--border);
+}
+
+
+/* =========================================================
+   PROFILE IMAGE
+========================================================= */
+
+.profile-image-container {
+    width: 100%;
+}
+
+.profile-placeholder,
+.profile-image {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    border-radius: 4px;
+}
+
+.profile-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-light);
+    border: 2px dashed #405266;
+    color: var(--text-secondary);
+}
+
+.profile-image {
+    display: block;
+    object-fit: cover;
+}
+
+
+/* =========================================================
+   HOME INTRODUCTION TEXT
+========================================================= */
+
+.intro-content h2 {
+    margin-bottom: 25px;
+    color: var(--text);
+    font-size: clamp(2.5rem, 5vw, 4.3rem);
+    line-height: 1.05;
+}
+
+.intro-content h3 {
+    margin-bottom: 18px;
+    color: var(--accent);
+    font-size: 1.4rem;
+}
+
+.intro-text {
+    max-width: 680px;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.9;
+}
+
+
+/* =========================================================
+   FRO BROS TOP BAR
+========================================================= */
+
+.fro-bros-header {
+    width: 100%;
+    height: 64px;
+    background:
+        linear-gradient(
+            120deg,
+            var(--banner-dark),
+            var(--banner)
+        );
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+/* =========================================================
+   FRO BROS SHOWCASE
+========================================================= */
+
+.fro-bros-showcase {
+    width: 100%;
+    padding: 45px 20px 55px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* =========================================================
+   FRO BROS LOGO + GENRE
+========================================================= */
+
+.fro-bros-title-row {
+    width: min(1400px, 96vw);
+    height: 250px;
+    margin: 0 auto 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    /* Balance the logo artwork's internal whitespace so the visible
+       logo + genre group is centered over the gameplay video. */
+    transform: translateX(-38px);
+}
+
+.fro-bros-logo-container {
+    width: 500px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    overflow: visible;
+}
+
+.fro-bros-logo {
+    display: block;
+    width: 900px;
+    height: 340px;
+    max-width: none;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.fro-bros-title-text {
+    height: 250px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: -25px;
+}
+
+.fro-bros-title-text p {
+    margin: 0;
+    color: var(--text);
+    font-size: clamp(1.65rem, 2.25vw, 2.25rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   FRO BROS DESCRIPTION
+========================================================= */
+
+.fro-bros-description {
+    width: min(1000px, 90vw);
+    margin: 0 auto 35px;
+    text-align: center;
+}
+
+.fro-bros-description p {
+    color: var(--text-secondary);
+    font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+    line-height: 1.75;
+    font-weight: 400;
+}
+
+
+/* =========================================================
+   GAMEPLAY VIDEO
+========================================================= */
+
+.gameplay-video-container {
+    width: min(1400px, 96vw);
+    margin: 0 auto;
+}
+
+.gameplay-video {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    background-color: #000;
+    border-radius: 6px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================================
+   PROJECT OVERVIEW
+========================================================= */
+
+.project-overview {
+    width: min(1400px, 96vw);
+    margin: 20px auto 100px;
+    border: 1px solid var(--border);
+    background-color: rgba(23, 37, 54, 0.35);
+}
+
+
+/* =========================================================
+   QUICK PROJECT INFORMATION
+========================================================= */
+
+.project-info-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    border-bottom: 1px solid var(--border);
+}
+
+.project-info-item {
+    min-height: 120px;
+    padding: 24px 28px;
+    border-right: 1px solid var(--border);
+}
+
+.project-info-item:last-child {
+    border-right: none;
+}
+
+.project-info-label {
+    margin-bottom: 10px;
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+.project-info-value {
+    color: var(--text);
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   CONTRIBUTIONS
+========================================================= */
+
+.contribution-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.contribution-card {
+    min-height: 300px;
+    padding: 32px 34px 38px;
+    border-right: 1px solid var(--border);
+}
+
+.contribution-card:last-child {
+    border-right: none;
+}
+
+.contribution-card h2 {
+    margin-bottom: 15px;
+    color: var(--text);
+    font-size: clamp(1.35rem, 2vw, 1.7rem);
+    line-height: 1.25;
+}
+
+.contribution-card p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   DESIGN CASE STUDY
+========================================================= */
+
+.design-case-study {
+    width: min(1400px, 92vw);
+    margin: 0 auto 130px;
+    padding-top: 20px;
+}
+
+.case-study-intro {
+    display: grid;
+    grid-template-columns:
+        minmax(330px, 0.9fr)
+        minmax(500px, 1.25fr);
+    gap: 90px;
+    align-items: start;
+    padding: 15px 0 85px;
+    border-bottom: 1px solid var(--border);
+}
+
+
+/* =========================================================
+   CASE STUDY HEADING
+========================================================= */
+
+.case-study-label {
+    margin-bottom: 18px;
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+}
+
+.case-study-heading h2 {
+    max-width: 520px;
+    color: var(--text);
+    font-size: clamp(3rem, 5vw, 5.3rem);
+    line-height: 1.03;
+    letter-spacing: -2px;
+}
+
+
+/* =========================================================
+   CASE STUDY DESCRIPTION
+========================================================= */
+
+.case-study-description {
+    padding-top: 3px;
+}
+
+.case-study-description p {
+    margin-bottom: 22px;
+    color: var(--text-secondary);
+    font-size: clamp(1rem, 1.25vw, 1.12rem);
+    line-height: 1.8;
+}
+
+.case-study-description p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   TURNING HAIR INTO GAMEPLAY
+========================================================= */
+
+.hair-gameplay-section {
+    padding-top: 80px;
+}
+
+.hair-gameplay-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.hair-gameplay-intro .case-study-heading h2 {
+    max-width: none;
+    font-size: clamp(2.7rem, 4vw, 3.8rem);
+    line-height: 1.06;
+    letter-spacing: -1.6px;
+}
+
+.hair-gameplay-intro .case-study-description {
+    align-self: center;
+}
+
+@media (max-width: 1100px) {
+    .hair-gameplay-intro {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+}
+
+
+/* =========================================================
+   DESIGN TABS
+========================================================= */
+
+.design-tabs {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin-bottom: 45px;
+    border-bottom: 1px solid var(--border);
+}
+
+.design-tab {
+    position: relative;
+    padding: 18px 12px 20px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.design-tab:hover {
+    color: var(--text);
+    background-color: rgba(255, 255, 255, 0.025);
+}
+
+.design-tab.active {
+    color: var(--text);
+}
+
+.design-tab.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 3px;
+    background-color: var(--accent);
+}
+
+
+/* =========================================================
+   TAB CONTENT
+========================================================= */
+
+.design-tab-content {
+    display: none;
+    grid-template-columns:
+        minmax(300px, 0.75fr)
+        minmax(500px, 1.25fr);
+    gap: 65px;
+    align-items: center;
+    min-height: 470px;
+}
+
+.design-tab-content.active {
+    display: grid;
+}
+
+
+/* =========================================================
+   TAB COPY
+========================================================= */
+
+.tab-copy h3 {
+    margin-bottom: 22px;
+    color: var(--text);
+    font-size: clamp(2rem, 3.5vw, 3.3rem);
+    line-height: 1.08;
+    letter-spacing: -1px;
+}
+
+.tab-copy p {
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+    font-size: 1.04rem;
+    line-height: 1.8;
+}
+
+.tab-copy p:last-child {
+    margin-bottom: 0;
+}
+
+.tab-copy strong {
+    color: var(--text);
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   FUTURE TAB MEDIA
+========================================================= */
+
+.tab-media-placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:
+        linear-gradient(
+            135deg,
+            #172536,
+            #0d151d
+        );
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    color: rgba(184, 196, 207, 0.55);
+    font-size: 0.85rem;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   DEFENSIVE DESIGN
+========================================================= */
+
+.defensive-design-section {
+    width: 100%;
+    margin-top: 20px;
+    padding: 95px 4vw 115px;
+    background-color: var(--background-light);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.defensive-design-intro {
+    width: min(1400px, 92vw);
+    margin: 0 auto 90px;
+    display: grid;
+    grid-template-columns:
+        minmax(380px, 0.95fr)
+        minmax(500px, 1.15fr);
+    gap: 110px;
+    align-items: start;
+}
+
+.defensive-design-heading .case-study-label {
+    margin-bottom: 18px;
+}
+
+.defensive-design-heading h2 {
+    max-width: 590px;
+    color: var(--text);
+    font-size: clamp(3rem, 5vw, 5.2rem);
+    line-height: 1.05;
+    letter-spacing: -2px;
+}
+
+.defensive-design-description {
+    padding-top: 3px;
+}
+
+.defensive-design-description p {
+    margin-bottom: 24px;
+    color: var(--text-secondary);
+    font-size: clamp(1rem, 1.25vw, 1.12rem);
+    line-height: 1.8;
+}
+
+.defensive-design-description p:last-child {
+    margin-bottom: 0;
+}
+
+.defensive-design-description strong {
+    color: var(--text);
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   DEFENSIVE SHOWCASE GRID
+========================================================= */
+
+.defensive-showcase-grid {
+    width: min(1400px, 92vw);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 85px 55px;
+}
+
+
+/* =========================================================
+   DEFENSIVE SHOWCASE CARDS
+========================================================= */
+
+.defensive-showcase-card {
+    width: 100%;
+}
+
+.defensive-showcase-card-centered {
+    grid-column: 1 / -1;
+    width: calc(50% - 27.5px);
+    justify-self: center;
+}
+
+
+/* =========================================================
+   DEFENSIVE SHOWCASE MEDIA
+========================================================= */
+
+.defensive-video-placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:
+        linear-gradient(
+            135deg,
+            #101923,
+            #0b1219
+        );
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    color: rgba(184, 196, 207, 0.55);
+    font-size: 0.82rem;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   DEFENSIVE SHOWCASE COPY
+========================================================= */
+
+.defensive-showcase-copy {
+    max-width: 620px;
+}
+
+.defensive-hairstyle-name {
+    margin-bottom: 10px;
+    color: var(--accent);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+.defensive-showcase-copy h3 {
+    margin-bottom: 20px;
+    color: var(--text);
+    font-size: clamp(2rem, 3vw, 3rem);
+    line-height: 1.08;
+}
+
+.defensive-showcase-copy p {
+    margin-bottom: 18px;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+.defensive-showcase-copy p:last-child {
+    margin-bottom: 0;
+}
+
+.defensive-showcase-copy strong {
+    color: var(--text);
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.portfolio-button {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 22px;
+    background-color: var(--accent);
+    color: var(--background);
+    font-weight: 700;
+    border-radius: 4px;
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.portfolio-button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.home-featured-project .portfolio-button {
+    margin-top: 0;
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    padding: 30px;
+    text-align: center;
+    color: var(--text-secondary);
+    background-color: #0b1219;
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .navbar {
+        height: 60px;
+        padding: 0 25px;
+    }
+
+    .nav-links {
+        gap: 24px;
+    }
+
+    .dropdown-menu {
+        top: 60px;
+    }
+
+    .home-header {
+        min-height: 120px;
+    }
+
+    .home-header-inner {
+        padding: 0 25px;
+        gap: 18px;
+    }
+
+    .home-site-name {
+        font-size: 1.6rem;
+    }
+
+    .home-header-title {
+        font-size: 2.2rem;
+    }
+
+    .home-work-section {
+        width: 94%;
+        padding: 50px 0 65px;
+    }
+
+    .home-featured-project {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .intro-section {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding-top: 60px;
+    }
+
+    .profile-image-container {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .intro-content {
+        text-align: left;
+    }
+
+    .fro-bros-header {
+        height: 60px;
+    }
+
+    .fro-bros-showcase {
+        padding-top: 35px;
+    }
+
+    .fro-bros-title-row {
+        width: 96vw;
+        height: 190px;
+        gap: 0;
+        transform: none;
+    }
+
+    .fro-bros-logo-container {
+        width: 340px;
+        height: 190px;
+    }
+
+    .fro-bros-logo {
+        width: 620px;
+        height: 260px;
+    }
+
+    .fro-bros-title-text {
+        height: 190px;
+        margin-left: -15px;
+    }
+
+    .fro-bros-title-text p {
+        font-size: 1.25rem;
+    }
+
+    .fro-bros-description {
+        width: 90vw;
+        margin-bottom: 25px;
+    }
+
+    .gameplay-video-container {
+        width: 97vw;
+    }
+
+    .project-overview {
+        width: 94vw;
+    }
+
+    .project-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-info-item {
+        min-height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .project-info-item:last-child {
+        border-bottom: none;
+    }
+
+    .contribution-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contribution-card {
+        min-height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .contribution-card:last-child {
+        border-bottom: none;
+    }
+
+    .design-case-study {
+        width: 90vw;
+        margin-bottom: 90px;
+    }
+
+    .case-study-intro {
+        grid-template-columns: 1fr;
+        gap: 45px;
+        padding-bottom: 60px;
+    }
+
+    .case-study-heading h2 {
+        max-width: 650px;
+    }
+
+    .hair-gameplay-section {
+        padding-top: 60px;
+    }
+
+    .design-tabs {
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 0;
+    }
+
+    .design-tab-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        min-height: auto;
+    }
+
+    .tab-media-placeholder {
+        max-width: 720px;
+    }
+
+    .defensive-design-section {
+        padding: 75px 5vw 85px;
+    }
+
+    .defensive-design-intro {
+        width: 90vw;
+        grid-template-columns: 1fr;
+        gap: 45px;
+        margin-bottom: 65px;
+    }
+
+    .defensive-design-heading h2 {
+        max-width: 680px;
+    }
+
+    .defensive-showcase-grid {
+        width: 90vw;
+        grid-template-columns: 1fr;
+        gap: 65px;
+    }
+
+    .defensive-showcase-card-centered {
+        grid-column: auto;
+        width: 100%;
+        justify-self: stretch;
+    }
+
+    .defensive-showcase-copy {
+        max-width: none;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 500px) {
+
+    .navbar {
+        height: 56px;
+        padding: 0 18px;
+    }
+
+    .nav-links {
+        gap: 18px;
+    }
+
+    .nav-link {
+        font-size: 0.85rem;
+    }
+
+    .dropdown-menu {
+        top: 56px;
+        width: 190px;
+    }
+
+    .home-header {
+        min-height: 135px;
+    }
+
+    .home-header-inner {
+        padding: 14px 18px;
+        grid-template-columns: 1fr auto;
+        gap: 14px;
+    }
+
+    .home-site-name {
+        font-size: 1.4rem;
+        letter-spacing: -1px;
+    }
+
+    .home-header-title {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        justify-self: center;
+        font-size: 2rem;
+    }
+
+    .home-header .navbar {
+        grid-column: 2;
+        grid-row: 1;
+        height: 45px;
+    }
+
+    .home-header .nav-links {
+        gap: 15px;
+    }
+
+    .home-work-section {
+        width: 92%;
+        padding: 40px 0 55px;
+    }
+
+    .home-featured-project h2 {
+        font-size: 1.7rem;
+    }
+
+    .intro-section {
+        padding: 50px 20px;
+    }
+
+    .fro-bros-header {
+        height: 56px;
+    }
+
+    .fro-bros-showcase {
+        padding: 25px 8px 40px;
+    }
+
+    .fro-bros-title-row {
+        width: 98vw;
+        height: 125px;
+        margin-bottom: 10px;
+        gap: 0;
+    }
+
+    .fro-bros-logo-container {
+        width: 230px;
+        height: 125px;
+    }
+
+    .fro-bros-logo {
+        width: 420px;
+        height: 180px;
+    }
+
+    .fro-bros-title-text {
+        height: 125px;
+        margin-left: -10px;
+    }
+
+    .fro-bros-title-text p {
+        font-size: 0.8rem;
+        white-space: nowrap;
+    }
+
+    .fro-bros-description {
+        width: 92vw;
+        margin-bottom: 22px;
+    }
+
+    .fro-bros-description p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .gameplay-video-container {
+        width: 98vw;
+    }
+
+    .project-overview {
+        width: 94vw;
+        margin-top: 10px;
+        margin-bottom: 70px;
+    }
+
+    .project-info-item {
+        padding: 20px 22px;
+    }
+
+    .contribution-card {
+        padding: 28px 22px 32px;
+    }
+
+    .design-case-study {
+        width: 90vw;
+        margin-bottom: 70px;
+        padding-top: 0;
+    }
+
+    .case-study-intro {
+        gap: 32px;
+        padding-bottom: 50px;
+    }
+
+    .case-study-label {
+        margin-bottom: 12px;
+        font-size: 0.7rem;
+    }
+
+    .case-study-heading h2 {
+        font-size: 2.7rem;
+        letter-spacing: -1px;
+    }
+
+    .case-study-description p {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .hair-gameplay-section {
+        padding-top: 50px;
+    }
+
+    .hair-gameplay-intro {
+        margin-bottom: 35px;
+    }
+
+    .hair-gameplay-intro h2 {
+        font-size: 2.3rem;
+    }
+
+    .hair-gameplay-intro p {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .design-tabs {
+        grid-template-columns: repeat(2, 1fr);
+        margin-bottom: 35px;
+    }
+
+    .design-tab {
+        padding: 15px 8px 17px;
+        font-size: 0.88rem;
+    }
+
+    .design-tab-content {
+        gap: 32px;
+    }
+
+    .tab-copy h3 {
+        font-size: 2rem;
+    }
+
+    .tab-copy p {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .defensive-design-section {
+        margin-top: 0;
+        padding: 60px 5vw 70px;
+    }
+
+    .defensive-design-intro {
+        width: 90vw;
+        gap: 32px;
+        margin-bottom: 55px;
+    }
+
+    .defensive-design-heading h2 {
+        font-size: 2.7rem;
+        letter-spacing: -1px;
+    }
+
+    .defensive-design-description p {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .defensive-showcase-grid {
+        width: 90vw;
+        gap: 55px;
+    }
+
+    .defensive-video-placeholder {
+        margin-bottom: 24px;
+    }
+
+    .defensive-showcase-copy h3 {
+        font-size: 2rem;
+    }
+
+    .defensive-showcase-copy p {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+}
+
+/* Match the gameplay section label to the core philosophy label. */
+.hair-gameplay-intro .case-study-label {
+    margin-bottom: 18px;
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+}
+
+/* Hairstyle playstyle bullets: match philosophy section accent labels. */
+.tab-copy .hairstyle-playstyle-list {
+    color: var(--text-secondary);
+    font-size: 1.04rem;
+    line-height: 1.8;
+    padding-left: 1.5rem;
+    margin: -6px 0 0;
+}
+.tab-copy .hairstyle-playstyle-list li { margin-bottom: 9px; }
+.tab-copy .hairstyle-playstyle-list li:last-child { margin-bottom: 0; }
+.tab-copy .hairstyle-playstyle-list strong { color: var(--accent); }
+@media (max-width: 768px) {
+    .tab-copy .hairstyle-playstyle-list { font-size: 1rem; line-height: 1.7; }
+}
+
+/* Subtle separation between dungeon accessories and pre-run hairpins. */
+.tab-copy .accessories-divider {
+    border: 0;
+    border-top: 1px solid rgba(180, 195, 211, 0.22);
+    margin: 30px 0 26px;
+}
+
+/* Defensive options use the same yellow hairstyle labels as the gameplay tabs. */
+.defensive-design-description .defensive-options-list {
+    color: var(--text-secondary);
+    font-size: clamp(1rem, 1.25vw, 1.12rem);
+    line-height: 1.8;
+    padding-left: 1.5rem;
+    margin: 0 0 24px;
+}
+.defensive-design-description .defensive-options-list li { margin-bottom: 9px; }
+.defensive-design-description .defensive-options-list li:last-child { margin-bottom: 0; }
+.defensive-design-description .defensive-options-list .hairstyle-name { color: var(--accent); }
+@media (max-width: 768px) {
+    .defensive-design-description .defensive-options-list { font-size: 1rem; line-height: 1.7; }
+}
+
+/* Afro ability breakdown: compact heading and consistent yellow bullet labels. */
+.defensive-showcase-copy h3 { font-size: clamp(1.75rem, 2.5vw, 2.45rem); }
+.defensive-ability-list {
+    padding-left: 1.5rem;
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.75;
+}
+.defensive-ability-list li { margin-bottom: 18px; }
+.defensive-ability-list li:last-child { margin-bottom: 0; }
+.defensive-ability-list strong { color: var(--text); font-weight: 700; }
+.defensive-ability-list .ability-name { color: var(--accent); }
+
+/* Keep hairstyle labels yellow despite the general showcase paragraph rule. */
+.defensive-showcase-copy .defensive-hairstyle-name {
+    color: var(--accent);
+}
+
+/* Alternating full-width case study backgrounds (no dividing lines). */
+.design-case-study {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: var(--background-light);
+}
+.design-case-study > .case-study-intro {
+    width: min(1400px, 92vw);
+    margin: 0 auto;
+    padding: 100px 0 105px;
+    border-bottom: 0;
+}
+.design-case-study .hair-gameplay-section {
+    background: var(--background);
+    padding: 100px max(4vw, calc((100vw - 1400px) / 2)) 110px;
+}
+.defensive-design-section {
+    margin-top: 0;
+    border: 0;
+}
+.defensive-design-section:not([id]) {
+    background: var(--background-light);
+}
+#weapon-design { background: var(--background); }
+#build-variety { background: var(--background-light); }
+#enemy-interactions { background: var(--background); }
+#weapon-design .defensive-design-intro,
+#build-variety .defensive-design-intro,
+#enemy-interactions .defensive-design-intro {
+    margin-bottom: 0;
+}
+@media (max-width: 768px) {
+    .design-case-study > .case-study-intro { padding: 75px 0; }
+    .design-case-study .hair-gameplay-section { padding: 75px 5vw; }
+}
+
+/* Weapon showcase: maintain hairstyle layout without yellow eyebrow labels. */
+#weapon-design .defensive-design-intro { margin-bottom: 90px; }
+#weapon-design .defensive-showcase-copy h3 { margin-top: 0; }
+@media (max-width: 768px) {
+    #weapon-design .defensive-design-intro { margin-bottom: 65px; }
+}
