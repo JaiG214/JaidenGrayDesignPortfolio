@@ -1520,3 +1520,15 @@ a {
 @media (max-width: 768px) {
     #weapon-design .defensive-design-intro { margin-bottom: 65px; }
 }
+
+/* =========================================================
+   RESUME PAGE
+========================================================= */
+.resume-main { width: min(900px, 90%); margin: 0 auto; padding: 80px 0 110px; }
+.resume-eyebrow { color: var(--accent); font-size: .82rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 10px; }
+.resume-main h1 { font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1.15; margin-bottom: 14px; }
+.resume-lead { color: var(--text-secondary); font-size: 1.12rem; max-width: 650px; margin-bottom: 42px; }
+.resume-panel { background: var(--background-light); border: 1px solid var(--border); border-radius: 12px; padding: clamp(26px, 5vw, 48px); }
+.resume-panel h2 { font-size: 1.5rem; margin-bottom: 12px; }
+.resume-panel p { color: var(--text-secondary); margin-bottom: 24px; }
+.resume-panel .portfolio-button { display: inline-flex; }
