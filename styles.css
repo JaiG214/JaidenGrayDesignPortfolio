@@ -1532,3 +1532,10 @@ a {
 .resume-panel h2 { font-size: 1.5rem; margin-bottom: 12px; }
 .resume-panel p { color: var(--text-secondary); margin-bottom: 24px; }
 .resume-panel .portfolio-button { display: inline-flex; }
+
+/* Embedded resume PDF */
+.resume-main { width: min(980px, 92%); }
+.resume-document-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 22px; }
+.resume-document-header h2 { margin-bottom: 0; }
+.resume-pdf { display: block; width: 100%; height: min(1100px, 82vh); min-height: 540px; border: 1px solid var(--border); border-radius: 8px; background: #fff; }
+@media (max-width: 600px) { .resume-pdf { min-height: 480px; height: 72vh; } }
